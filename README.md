@@ -1,5 +1,6 @@
 # Chess960
 Setup, Nodes after 20 moves, Evaluation
+
 Classical Set up 
 ```
 rnbqkbnr, 1338532, 0.48
