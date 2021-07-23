@@ -1,14 +1,17 @@
 # Chess960
-Setup, Nodes after 20 moves,evaluation
+Setup, Nodes after 20 moves, Evaluation
 Classical Set up 
-rnbqkbnr,1338532,0.48
+```
+rnbqkbnr, 1338532, 0.48
+```
 Best Chess 960 setups
-nrkbbnrq,3901301,0.05
-qrnkbnrb,4097438,0.07
-rnkrbnqb,4200981,-0.07
-qrnknrbb,4207470,0.06
-bqrbnkrn,4741986,-0.08
-
+```
+nrkbbnrq, 3901301, 0.05
+qrnkbnrb, 4097438, 0.07
+rnkrbnqb, 4200981, -0.07
+qrnknrbb, 4207470, 0.06
+bqrbnkrn, 4741986, -0.08
+```
 How I determined the Best Chess Set Opening? 
 The two criteria for an optimal setup: 
 1.when the game starts white and black have approximately equal probabilities of winning.
