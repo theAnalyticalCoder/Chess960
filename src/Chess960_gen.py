@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jul 24 19:03:48 2021
+This program generate a text file Commands.txt
+setoption name UCI_Chess960 value true
+d
+eval
+go depth 20
+d 
+eval ...
 
-@author: liam
+using the command Commands.txt|stockfish_13_win_x64_bmi2>output.txt
+parsing is Trivial
 """
 if __name__== "__main__":
     with open("Chess960.txt", "r", encoding="utf-8") as chess:
