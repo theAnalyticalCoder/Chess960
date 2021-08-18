@@ -20,12 +20,15 @@ The two criteria for an optimal setup:
 
 Chess evaluations determine approximately how likely white is to win the game. At the start stockfish evaluates white as 0.48 
 which approximately translates to white having a 57% chance of winning (-0.48 would mean black has a 57% chance of winning).
-I decided that anything under 0.18 would which give either side a 52.5% was stasically signifcant enough to warrant being considerend strickly better
+I decided that anything within the range (-0.18,0.18) which give either side a 52.5% was stasically signifcant enough to warrant being considerend strickly better
 than the classical set up. I queried stockfish over the 960 differnet setups using the <<eval>>command. There where approxiametly 
 200 setups within the range (-0.18,0.18).
-Furthermore to measure the number of possible openings I compared the 200 setups at depth 25 <<go depth 20>>. i,e checking the number of valid possible 
+Furthermore to measure the number of possible openings I compared the 200 setups at depth 25 <<go depth 25>>. i,e checking the number of valid possible 
 openings after 25 moves of play.There are 9.3 million in the classical setup. In the best setups, I have found some with over 30 million 
-which is over 3 times as many as the classical setup.
+which is over 3 times as many as the classical setup. 
+ A Node represents a position, for example playing e4 from the classical setup is a Node so there are approximately 2-4 million games after 25 moves instead of 9.3 million.
+ However, since this will be a fixed percentage common to every setup (i.e no matter what moves you play you have to play 24 moves to get to a game of 25 moves) we can still
+ use the number of nodes as a measure of the number of possible openings.
 
 So Is 'nbrkbrnq' the confirmed Best Opening? Sadly No
  
