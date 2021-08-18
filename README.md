@@ -25,10 +25,10 @@ Chess evaluations determine approximately how likely white is to win the game. A
 which approximately translates to white having a 57% chance of winning (-0.48 would mean black has a 57% chance of winning).
 
 I decided that anything within the range (-0.18,0.18) which give either side a 52.5% of winning was stasically signifcant enough to warrant being considerend strickly better
-than the classical set up. I queried stockfish over the 960 differnet setups using the <<eval>>command. There where approxiametly 
+than the classical set up. I queried stockfish over the 960 differnet setups using the "eval" command. There where approxiametly 
 200 setups within the range (-0.18,0.18). The data is in Chess960_eval_20_25_fen.pkl.
     
-Furthermore to measure the number of possible openings I compared the 200 setups at depth 25 <<go depth 25>>. i,e checking the number of valid possible 
+Furthermore to measure the number of possible openings I compared the 200 setups at depth 25 "go depth 25". i,e checking the number of valid possible 
 openings after 25 moves of play.There are 9.3 million in the classical setup. In the best setups, I have found some with over 30 million 
 which is over 3 times as many as the classical setup.     
     
@@ -62,7 +62,7 @@ Second None of the Top 5 at depth 20 are in the Top 5 at depth 25. So does that 
   
   Todo  
   I will redo this expirement considering only the 300 setups that have an evaluation within (-0.18,0.18) at 30 moves. It took 12hrs for 960 at 25 and under an hour for 960 at 20. 30 moves may take 3-4 times as long...    
-For the Top 25-50 at 300 moves I will also get the points from 20-30 i.e doing <<go depth 20>> to get a sample set of 10 in which to decrease the confidence interval size.  
+For the Top 25-50 at 300 moves I will also get the points from 20-30 i.e doing "go depth 20", "go depth 21"... to get a sample set of 10 in which to decrease the confidence interval size.  
     
   Problems and possible improvements   
   1.Stockfish's evaluations at the start are the most unreliable of all their evaluations as there are infinetly many moves that can be played theoretically
