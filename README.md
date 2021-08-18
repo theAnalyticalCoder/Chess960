@@ -3,7 +3,7 @@
 How I determined the Best Chess Setup?   
 There are two criteria for an optimal setup:   
 1.When the game starts white and black have approximately equal probabilities of winning (50%).  
-2.There are a maximum of valid many different possible openings. i.e in classical "the sicilian" or "the queen's gambit" exetera   
+2.There is a maximum of valid possible openings. i.e in classical "the sicilian" or "the queen's gambit" etc    
 
   **Setup, Nodes after 25 moves, Evaluation**
 
