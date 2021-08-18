@@ -1,6 +1,6 @@
 
 # Chess960
-How I determined the Best Chess Set Opening?   
+How I determined the Best Chess Setup?   
 The two criteria for an optimal setup:   
 1.When the game starts white and black have approximately equal probabilities of winning (50%).  
 2.There are a maximum of valid many different possible openings. i.e in classical "the sicilian" or "the queen's gambit" exetera   
