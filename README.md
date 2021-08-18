@@ -25,15 +25,15 @@ than the classical set up. I queried stockfish over the 960 differnet setups usi
 200 setups within the range (-0.18,0.18).
 Furthermore to measure the number of possible openings I compared the 200 setups at depth 25 <<go depth 25>>. i,e checking the number of valid possible 
 openings after 25 moves of play.There are 9.3 million in the classical setup. In the best setups, I have found some with over 30 million 
-which is over 3 times as many as the classical setup. 
- A Node represents a position, for example playing e4 from the classical setup is a Node so there are approximately 2-4 million games after 25 moves instead of 9.3 million.
- However, since this will be a fixed percentage common to every setup (i.e no matter what moves you play you have to play 24 moves to get to a game of 25 moves) we can still
- use the number of nodes as a measure of the number of possible openings.
+which is over 3 times as many as the classical setup.  
+A Node represents a position, for example playing e4 from the classical setup is a Node so there are approximately 2-4 million games after 25 moves instead of 9.3 million.
+However, since this will be a fixed percentage common to every setup (i.e no matter what moves you play you have to play 24 moves to get to a game of 25 moves) we can still
+use the number of nodes as a measure of the number of possible openings.
 
-So Is 'nbrkbrnq' the confirmed Best Opening? Sadly No
+So Is 'nbrkbrnq' the confirmed Best Opening? Sadly No.
  
 Lets look at the same Problem but instead only looking at a depth of 20 moves
-Setup, Nodes after 25 moves, Evaluation
+Setup, Nodes after 20 moves, Evaluation
  Classical Set up 
 ```
 rnbqkbnr, 1.50 Million, 0.48
@@ -47,8 +47,10 @@ nrbknqrb, 4.03 Million, 0.05
 qrkbnnbr, 4.02 Million, 0.06
 ```
 Notice Anything?
-First it took 20 moves for 4.5 Million moves to be reached but only 5 moves (21-25) for 25 million new moves to be recorded. The Horror of Exponential growth.
-Second None of the Top 5 at depth 20 are in the Top 5 at depth 25. So does that mean this is all worthless? will None of the Top 5 at 25 be in the Top 5 at 30. Yes and No. It becomes necessary to create an approximate distribution for each
+First it took 20 moves for 4.5 Million moves to be reached but only 5 moves (21-25) for 25 million new moves to be recorded. The Horror of Exponential growth.  
+Second None of the Top 5 at depth 20 are in the Top 5 at depth 25. So does that mean this is all worthless? Will None of the Top 5 at 25 be in the Top 5 at 30. Yes and No.  
+It becomes necessary to create an approximate distribution for each setup for example an approximate formula for the classical setup is 3338*1.37^x and for rkqbbnrn 
+1166*1.5^x where x is the number of moves. We are going to ignore the constant infront and focus only on the bases, 1.37 and 1.5. Using 0.05 to construct 95% confidence interval for the clasical setup we have the true is an element of [1.33,1.42] and for rkqbbnrn [1.45,1.55] notice 1.42<1.45 this means we can definately say (with 95% confidence) that rkqbbnrn is stricktly better than the classical setup in fact after 30 moves the classical reaches 52 million Nodes and rkqbbnrn reaches 160 million it is abundantly clear we have found a better setu
 
   Problems and possible improvements 
 1.Stockfish's evaluations at the start are the most unreliable of all their evaluations as there are infinetly many moves that can be played theoretically
