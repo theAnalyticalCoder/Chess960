@@ -96,18 +96,4 @@ if __name__== "__main__":
     pickle.dump(eval_nodes_fen, a_file)
     a_file.close()
 
-    #useless_cat_call = subprocess.Popen("stockfish", stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,                              text=True)
-    #output, errors = useless_cat_call.communicate(input=s)
-    #useless_cat_call.wait()
-
-
-    #p1=subprocess.run("echo f",shell=True,stdout=subprocess.PIPE, input="d/n",text=True)
-    #print(p1.stdout)
-    '''useless_cat_call = subprocess.Popen("type", stdin=subprocess.PIPE,shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,text=True)
-    output, errors = useless_cat_call.communicate(input="Hello from the other side!")
-    useless_cat_call.wait()
-    print(output)
-    print(errors)'''
-    '''s = "setoption name UCI_Chess960 value true\nposition fen \"bqnbnrkr/pppppppp/8/8/8/8/PPPPPPPP/BQNBNRKR w - - 0 1\"\ngo depth 20\ngo movetime 15000"
-        p1 = subprocess.run("stockfish", shell=True, capture_output=True, input=s, text=True)
-        print(p1.stdout)'''
+   
