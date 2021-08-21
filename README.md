@@ -5,19 +5,19 @@ There are two criteria for an optimal setup:
 1.When the game starts white and black have approximately equal probabilities of winning (50%).  
 2.There is a maximum of valid possible openings. i.e in classical "the sicilian" or "the queen's gambit" etc    
 
-  **Setup, Nodes after 30 moves, Evaluation**
+  **Setup, Games after 30 moves, Evaluation**
 
 **Classical Set up** 
 ```
-rnbqkbnr, 52.9 Million, 0.48
+rnbqkbnr, 15.9 Million, 0.48
 ```
 **Best Chess 960 setups**
 ```
-rkqbbnrn, 194.2 Million, 0.02
-bbnqnrkr, 167.3 Million, 0.13
-rbkqbrnn, 166.7 Million, 0.13
-nbnrbqkr, 160.3 Million, -0.17
-bnrbqkrn, 158.7 Million, -0.13
+rkqbbnrn, 52.3 Million, 0.02
+bbnqnrkr, 50.2 Million, 0.13
+rbkqbrnn, 50.0 Million, 0.13
+nbnrbqkr, 48.1 Million, -0.17
+bnrbqkrn, 47.6 Million, -0.13
 ```
 
 
@@ -29,37 +29,37 @@ than the classical set up. I queried stockfish over the 960 differnet setups usi
 292 setups within the range (-0.18,0.18). 
     
 Furthermore to measure the number of possible openings I compared the 200 setups at depth 30 "go depth 30". i,e checking the number of valid possible 
-openings after 30 moves of play.There are 52.9 million in the classical setup. In the best setups, I have found some with over 160 million 
+openings after 30 moves of play.There are 15.9 million in the classical setup. In the best setups, I have found some with over 50 million 
 which is over 3 times as many as the classical setup.     
     
-A Node represents a position, for example playing e4 from the classical setup is a Node so there are fewer than 52.9 million games approximately (35-40%) so 19 million actual games are possible at 30 moves. However, since this will be a fixed percentage common to every setup (i.e no matter what moves you play you have to play 24 moves to get to a game of 25 moves) we can stilluse the number of nodes as a measure of the number of possible openings. I got the 35-40% number as most of these setups follow expontential distributions with base [1.35,1.50].  
+Note stockfish outputs Nodes not games. A Node represents a position, for example playing e4 from the classical setup is a Node. So there are many more nodes than actual games. There are in fact 52.9 Million Nodes for the classical setup and 197 Million for rkqbbnrn. If you want to get to game of 30 moves you have to play a game of 29 moves. So 197 mill represents the sum of all the games of 1 move, 2 moves, ... 30 moves. but we only care about the games of 30 moves. To get the number of games I multiplied the number of nodes by 30% because each of the distribution are expontial with a base in [1.35,1,45] to be exact you would be to find the base for the distribution then calculate what the percentage of new nodes is i.e [27%,32%]. This would only increase the discrepency between rkqbbnrn and rnbqkbnr. 
 
-The data for all is in 960 Chess960_eval_25_20_fen.pkl it took 12 hr to create. The data only for those setups whose evaluation was in (-0.18,0.18) is in Chess_960_30.pkl which took 12hr to compile despite only containing 292 entries. At depth 35, 1 opening takes 10-20 min so it would take 2-4 days to complete I have it running on an old computer. 40+moves onward could take as long as an hour each opening. Maybe if this gains some traction. We can split up the work accross different computers.
+The data for all is in 960 Chess960_eval_25_20_fen.pkl. This is the number of nodes not games to get the number of games multiply by 0.3. It took 12 hr to create. The data only for those setups whose evaluation was in (-0.18,0.18) is in Chess_960_30.pkl which took 12hr to compile despite only containing 292 entries. At depth 35, 1 opening takes 10-20 min so it would take 2-4 days to complete. 40+moves onward could take as long as an hour each opening. Maybe if this gains some traction. We can split up the work accross different computers.
 
 So Is 'rnbqkbnr' the confirmed Best Opening? Sadly No.
  
 Lets look at the same Problem but instead only looking at a depth of 25 moves  
-  **Setup, Nodes after 25 moves, Evaluation**
+  **Setup, Games after 25 moves, Evaluation**
 
 **Classical Set up** 
 ```
-rnbqkbnr, 9.2 Million, 0.48
+rnbqkbnr, 2.8 Million, 0.48
 ```
 **Best Chess 960 setups**
 ```
-nbrkbrnq, 33.3 Million, 0.01
-rkqbbnrn, 31.3 Million, 0.02
-qrkrnbbn, 29.7 Million, 0.01
-rknbbnrq, 29.6 Million, -0.08
-brqknbnr, 26.9 Million, -0.02
+nbrkbrnq, 10.0 Million, 0.01
+rkqbbnrn, 9.4 Million, 0.02
+qrkrnbbn, 8.9 Million, 0.01
+rknbbnrq, 8.9 Million, -0.08
+brqknbnr, 8.1 Million, -0.02
 ```
 Notice Anything?
-First it took 25 moves for 9.2 Million moves to be reached but only 5 moves (26-30) for 40 million new moves to be recorded. The Horrors of Exponential growth.  
+First it took 25 moves for 2.8 Million games to be reached but only 5 moves (26-30) for 13 million new moves to be recorded. The Horrors of Exponential growth.  
 Second Only one of the top 5 at depth 25 is in the Top 5 at depth 30 "rkqbbnrn". So does that mean this is all worthless? Will None of the Top 5 at 25 be in the Top 5 at 30. Yes and No.  
-  It becomes necessary to create an approximate distribution for each setup for example an approximate formula for the classical setup is 3338*1.37^x and for rkqbbnrn 
-1166*1.5^x where x is the number of moves. I querried stockfish for the number of nodes from 20-30 to construct this distribution i.e doing "go depth 20", "go depth 21"...
+  It becomes necessary to create an approximate distribution for each setup for example an approximate formula for the classical setup is 1232*1.362^x and for rkqbbnrn 
+1146*1.423^x where x is the number of moves. I querried stockfish for the number of nodes from 20-35 to construct this distribution i.e doing "go depth 20", "go depth 21"...
     
-  We are going to ignore the constant infront and focus only on the bases, 1.37 and 1.5. We need to construct 95% confidence interval for the clasical setup we have the true base is an element of [1.333,1.415] and for rkqbbnrn [1.437,1.556] notice 1.415<1.437 this means we can definitely say (with 95% confidence) that rkqbbnrn is strickly better than the classical setup. 
+  We are going to ignore the constant infront and focus only on the bases, 1.362 and 1.461. We need to construct 95% confidence interval for the clasical setup we have the true base is an element of [1.340,1.384] and for rkqbbnrn [1.385,1.461] notice 1.384<1.385 this means we can definitely say (with 95% confidence) that rkqbbnrn is strickly better than the classical setup but its close. 
  ![alt text](https://github.com/theAnalyticalCoder/Chess960/blob/main/Trends.png) 
  
   Looking at the graph it is abundantly clear there is no way the classical setup can ever catch rkqbbnrn. However the approximate setup nbrkbrnq (1st place at 25 moves 25th after 30)has a formula of 3178*1.43^x CI=[1.370,1.492] which means there is some potential overlapwith [1.333,1.415]. As we increase depth we will be able to shrink our confidence intervals and most likely determine 25-50 setups that are optimal. I did not include moves 1-19 since we are only concerned with what happens on the larger scale of the spectrum and these moves would shrink the confidence interval perhaps prematurely.
