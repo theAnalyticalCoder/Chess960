@@ -1,9 +1,9 @@
 
 # Chess960
-How I determined the Best Chess Setup?   
+How to determine Best Chess Setup.   
 There are two criteria for an optimal setup:   
 1.When the game starts white and black have approximately equal probabilities of winning (50%).  
-2.There is a maximum of valid possible openings. i.e in classical "the sicilian" or "the queen's gambit" etc    
+2.There is a maximum of valid possible games. i.e in classical some possible openings are "the sicilian" or "the queen's gambit" which lead to millions of games    
 
 
 **Classical Set up** 
@@ -27,8 +27,7 @@ bnrbqkrn, 47.6 Million, 48.1%
 Chess evaluations determine approximately how likely white is to win the game. At the start stockfish evaluates white as 0.48 using the formula from [this site](https://www.chessprogramming.org/Pawn_Advantage,_Win_Percentage,_and_Elo)
 which approximately translates to white having a 56% chance of winning (-0.48 would mean black has a 56% chance of winning). This formula slightly overestimates whites chances of winning by 0.8% vs empirical data.
 
-I decided that anything within the range (-0.18,0.18) which give either side a max 52.5% of winning was stasically signifcant enough to warrant being considerend strickly better
-than the classical set up. I queried stockfish over the 960 differnet setups using the "eval" command. There are
+I decided that anything within the range (-0.18,0.18) which give either side a max of 52.5% chance of winning was stasically signifcant enough to warrant being considerend strickly better than the classical set up. I queried stockfish over the 960 differnet setups using the "eval" command. There are
 292 setups within the range (-0.18,0.18). 
     
 Furthermore to measure the number of possible openings I compared the 200 setups at depth 30 "go depth 30". i,e checking the number of valid possible 
@@ -80,4 +79,4 @@ versus say an evaulation of a position 20 moves deep. However Since this error i
 Using Leela chess0 evaluations and possibly averaging the two may be a solution.  
   2. I used the number of Nodes which counts bad positions I.e the computer checks e4e5 ke2 desipite being a bad move the computer still checks it and counts it as one of 
 the Nodes visited. However once again this is repeated in every evaluation we can expect an approximate percentage 75-80% of the actual number to be correct games. Furthermore 
-it under counts some possible games i.e a computer would never play a gambit(giving a pawn for positional advantage) but a human might. These two kind of cancel  so the number of nodes * 30% is still a pretty accurate representation of the number of games possible at x moves 
+it under counts some possible games i.e a computer would never play a gambit(ex the evans gambit) or make a bad move but a human most certainly would and could end up winning. These two kind of cancel eachother out so the number of nodes * 30% is still a pretty accurate representation of the number of games possible at x moves 
