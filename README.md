@@ -16,13 +16,14 @@ rnbqkbnr, 15.9 Million, 56%
 
 **Setup, Games after 30 moves, % White wins**
 ```
-rkqbbnrn, 52.3 Million, 50.2%
+V layout, 52.3 Million, 50.2%
 bbnqnrkr, 50.2 Million, 51.9%
 rbkqbrnn, 50.0 Million, 51.9%
 nbnrbqkr, 48.1 Million, 47.6%
 bnrbqkrn, 47.6 Million, 48.1%
 ```
-
+The Best Layout rkqbbnrn which I call the V layout due to the Bishops is pictured below
+![alt text](https://github.com/theAnalyticalCoder/Chess960/blob/main/V%20layout.png) 
 
 Chess evaluations determine approximately how likely white is to win the game. At the start stockfish evaluates white as 0.48 using the formula from [this site](https://www.chessprogramming.org/Pawn_Advantage,_Win_Percentage,_and_Elo)
 which approximately translates to white having a 56% chance of winning (-0.48 would mean black has a 56% chance of winning). This formula slightly overestimates whites chances of winning by 0.8% vs empirical data.
@@ -54,14 +55,14 @@ rnbqkbnr, 2.8 Million, 56%
 **Setup, Games after 25 moves, % White wins**
 ```
 nbrkbrnq, 10.0 Million, 50.1%
-rkqbbnrn, 9.4 Million, 50.2%
+V layout, 9.4 Million, 50.2%
 qrkrnbbn, 8.9 Million, 50.1%
 rknbbnrq, 8.9 Million, 48.8%
 brqknbnr, 8.1 Million, 49.8%
 ```
 Notice Anything?
 First it took 25 moves for 2.8 Million games to be reached but only 5 moves (26-30) for 13 million new games to be recorded. The Horrors of Exponential growth.  
-Second Only one of the top 5 at depth 25 is in the Top 5 at depth 30 "rkqbbnrn". So does that mean this is all worthless? Will None of the Top 5 at 25 be in the Top 5 at 30. Yes and No.  
+Second Only one of the top 5 at depth 25 is in the Top 5 at depth 30 the V layout or"rkqbbnrn". So does that mean this is all worthless? Will None of the Top 5 at 25 be in the Top 5 at 30. Yes and No.  
   It becomes necessary to create an approximate distribution for each setup for example an approximate formula for the classical setup is 1232*1.362^x and for rkqbbnrn 
 1146*1.423^x where x is the number of moves. I querried stockfish for the number of nodes from 20-35 to construct this distribution i.e doing "go depth 20", "go depth 21"...
     
